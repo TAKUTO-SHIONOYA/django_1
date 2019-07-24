@@ -1,0 +1,23 @@
+{% load static %}<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>本情報の登録</title>
+  </head>
+  <center>
+    <body>
+      <ol class="breadcrumb my-4">
+    <h1>本の登録を行います</h1>
+    <table>
+
+
+    <form  action="{% url 'create' %}" method="post">
+    　{% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="登録">
+    </form>
+    </table>
+  </ol>
+  </body>
+</center>
+</html>
