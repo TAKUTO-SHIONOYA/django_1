@@ -1,0 +1,20 @@
+{% load static %}
+<!doctype html>
+
+<html lang="'ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+
+</head>
+<td>
+<center><h1>{{title}}</h1></center>
+    <center>{% include 'lib/nav_bar.html' %}</center>
+<p>{{message|safe}}</p>
+<form action="{% url 'find' %}" method="='post'>
+{% csrf_token %}
+{{form}}
+<tr><th></th><td><input type="submit" value="click"></td></tr></form>
+{% include "lib/table.html" %}
+</body>
+</html>

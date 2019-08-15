@@ -17,3 +17,7 @@ class createForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['day'].widget.attrs.update({'rows' : '3000'})
+
+class FindForm(forms.Form):
+    find = forms.CharField(label='Find', required=False)
+

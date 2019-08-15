@@ -1,26 +1,15 @@
 from django.shortcuts import render
 from .models import Book, Category, Author
 from django.http import HttpResponse
-from .forms import CreateForm,createForm
+from .forms import CreateForm,createForm,FindForm
 from django.shortcuts import redirect
 from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
+import pandas as pd
 
 # Create your views here.
-def paginate_queryset(request, queryset, count):
-    """Pageオブジェクトを返す。
 
-    ページングしたい場合に利用してください。
+def pagination(request, queryset, count):
 
-    countは、1ページに表示する件数です。
-    返却するPgaeオブジェクトは、以下のような感じで使えます。
-
-        {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
-        {% endif %}
-
-    また、page_obj.object_list で、count件数分の絞り込まれたquerysetが取得できます。
-
-    """
     paginator = Paginator(queryset, count)
     page = request.GET.get('page')
     try:
@@ -31,19 +20,18 @@ def paginate_queryset(request, queryset, count):
         page_obj = paginator.page(paginator.num_pages)
     return page_obj
 
+def main(request, page):
 
-def main(request,num):
     data = Book.objects.all()
-    page_obj = paginate_queryset(request, data, 10)
+    paginator = Paginator(data, 10)
 
-    params = {
-        'data': page_obj.object_list,
-        'page_obj': page_obj,
-
+    page = request.GET.get('page')
+    contacts = paginator.get_page(page)
 
 
-        }
-    return render(request,'lib/main.html', params)
+
+        
+    return render(request,'lib/main.html',{'data':data} ,{'contacts': contacts})
 
 def content(request,num):
     book = Book.objects.get(id=num)
@@ -77,3 +65,26 @@ def index(request,num):
 
         }
     return render(request, 'lib/index.html', params)
+
+def find(request):
+    if (request.method == 'POST'):
+        msg = request.POST['find']
+        form = FindForm(request.POST)
+        sql = 'select * from Lib_Authors'
+        if (msg != ''):
+            sql += ' where ' + msg
+        data = Book.objects.raw(sql)
+        msg = sql
+    else:
+        msg = 'search words...'
+        form = FindForm()
+        data = Book.objects.all()
+
+    params = {
+        'title': 'Hello',
+        'message': msg,
+        'form':form,
+        'data':data,
+
+    }
+    return render(request, 'lib/find.html', params)
