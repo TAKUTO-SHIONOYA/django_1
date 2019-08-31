@@ -6,6 +6,12 @@
     <title></title>
   </head>
   <body>
+     
+    <div class="container">
+      <div class="row">
+          {% include 'lib/nav_bar.html' %}
+          </div>
+        <div class="row">
     <ol class="breadcrumb my-4">
 
     <table>
@@ -35,7 +41,9 @@
   {% for post in post_list %}
     <p>{{ post.title }}</p>
 {% endfor %}
-
+</ol>
+</div>
+<div class="row">
 <ul class="pagination">
     <!-- 前へ の部分 -->
     {% if page_obj.has_previous %}
@@ -64,5 +72,8 @@
         </li>
     {% endif %}
 </ul>
+</div>
+</div>
+
   </body>
 </html>

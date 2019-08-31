@@ -138,3 +138,4 @@ if not DEBUG:
 
 
 LOGIN_REDIRECT_URL = '/find'
+PAGE_PER_ITEM = 15

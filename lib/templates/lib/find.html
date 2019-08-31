@@ -7,14 +7,28 @@
     <title>{{title}}</title>
 
 </head>
-<td>
-<center><h1>{{title}}</h1></center>
-    <center>{% include 'lib/nav_bar.html' %}</center>
-<p>{{message|safe}}</p>
-<form action="{% url 'find' %}" method="='post'>
-{% csrf_token %}
-{{form}}
-<tr><th></th><td><input type="submit" value="click"></td></tr></form>
-{% include "lib/table.html" %}
+<body>
+    <div class="container">
+        <div class="row">
+
+            <h1>{{title}}</h1>
+                {% include 'lib/nav_bar.html' %}
+                <p>{{message|safe}}</p>
+        </div>
+        <div class="row">
+             <div class='col'>
+                <form action="{% url 'find' %}" method='post'>
+                {% csrf_token %}
+                {{form}}
+                <tr><th></th><td><input type="submit" value="click"></tr></form>
+             </div>
+        </div>
+        <div class="row">
+            {% include "lib/table.html" %}
+        </div>
+        <div class="row">
+                {% include "lib/pagination.html" %}
+        </div>
+    </div>
 </body>
 </html>

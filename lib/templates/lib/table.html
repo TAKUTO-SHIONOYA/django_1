@@ -20,7 +20,7 @@
     
     
             <th scope="col">Day</th>
-            <th scope="col">ID</th>
+          
     
             <th scope="col">Title</th>
             <th scope="col">Author</th>
@@ -35,10 +35,9 @@
     
     
           <td>{{books.day}}</td>
-          <td>{{books.id}}</td>
-          <a href="{% url 'content' books.id %}">
-            <td>{{books.book_name}}</td>
-          </a>
+          
+            <td><button ><a class="btn btn-dark" href="{% url 'content' books.id %}" role="button">{{books.book_name}}</td>
+        
     
           <td>{{books.book_author}}</td>
           <td>{{books.book_category}}</td>
@@ -49,4 +48,5 @@
     </table>
     
     </section>
+    {% include 'lib/pagination.html' %}
     </div>

@@ -14,6 +14,10 @@ class createForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = ['day','book_name','book_category','book_author', 'book_context']
+        widgets = {
+            'day': forms.SelectDateWidget
+
+        }
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['day'].widget.attrs.update({'rows' : '3000'})

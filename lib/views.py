@@ -20,18 +20,30 @@ def pagination(request, queryset, count):
         page_obj = paginator.page(paginator.num_pages)
     return page_obj
 
-def main(request, page):
+def main(request, queyset,  count):
 
-    data = Book.objects.all()
-    paginator = Paginator(data, 10)
+    
+    paginator = Paginator(queyset, count)
 
     page = request.GET.get('page')
-    contacts = paginator.get_page(page)
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginatot.page(paginator.num_pages)
+    return page_obj
+
+def myapp1(request):
+  series = Book.objects.filter(deleted = False).order_by('-created_at')
+  page_obj = paginate_query(request, Book, settings.PAGE_PER_ITEM)   # ページネーション
+  return render(request, 'lib/main.html', {'page_obj': page_obj, 'site_name':settings.SITE_NAME})  # モデルから取得したobjectsの代わりに、page_objを渡す
+
 
 
 
         
-    return render(request,'lib/main.html',{'data':data} ,{'contacts': contacts})
+
 
 def content(request,num):
     book = Book.objects.get(id=num)
@@ -45,7 +57,7 @@ def create(request):
         obj = Book()
         book = createForm(request.POST, instance=obj)
         book.save()
-        return redirect(to='/main/1/')
+        return redirect(to='/myapp')
     params ={
             'form': createForm()
 

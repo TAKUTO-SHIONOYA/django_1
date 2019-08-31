@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="efe6365c-f940-4633-8541-7695c121c374" name="Default" comment="\">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accounts/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/templates/lib/find.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/books/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/books/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/templates/lib/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/lib/templates/lib/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/templates/lib/pagination.html" beforeDir="false" afterPath="$PROJECT_DIR$/lib/templates/lib/pagination.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="efe6365c-f940-4633-8541-7695c121c374" name="Default" comment="\" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

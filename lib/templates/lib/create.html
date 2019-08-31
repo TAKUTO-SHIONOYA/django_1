@@ -4,20 +4,36 @@
     <meta charset="utf-8">
     <title>本情報の登録</title>
   </head>
-  <center>
+  
+    
     <body>
+        {% include 'lib/nav_bar.html' %}
+        
+        <div class="container">
+            <h1>本の登録を行います</h1>
       <ol class="breadcrumb my-4">
-    <h1>本の登録を行います</h1>
+    
     <table>
+        <thead class="thead-dark">
+            <tr>
+                <form  action="{% url 'create' %}" method="post">
+                    　{% csrf_token %}
+                      {{ form.as_table }}
+                      <td><input type="submit" value="登録"></td>
+                      
+                    </form>
+                    
+            </tr>
+            
+    
+          </thead>
 
-
-    <form  action="{% url 'create' %}" method="post">
-    　{% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="登録">
-    </form>
     </table>
+    
   </ol>
+  </div>
+  
   </body>
-</center>
+
+
 </html>
