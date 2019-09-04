@@ -26,6 +26,10 @@ urlpatterns = [
     path('find', views.find, name='find'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
+    path('sumple', views.sumple, name='sumple'),
+    path('edit/<int:num>', views.edit, name='edit'),
+    path('login/', views.Login.as_view(), name='login')
+
 
 
 

@@ -2,13 +2,18 @@
 <!doctype html>
 
 <html lang="'ja">
+<div class="container">
+
+
 <head>
     <meta charset="utf-8">
     <title>{{title}}</title>
 
+
 </head>
+</div>
 <body>
-    <div class="container">
+    <div id="container" class="container">
         <div class="row">
 
             <h1>{{title}}</h1>
@@ -23,8 +28,15 @@
                 <tr><th></th><td><input type="submit" value="click"></tr></form>
              </div>
         </div>
+        <div class="container">
         <div class="row">
+          <tr>
+
+
+
             {% include "lib/table.html" %}
+          </tr>
+        </div>
         </div>
         <div class="row">
                 {% include "lib/pagination.html" %}

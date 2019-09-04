@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from .models import Book, Category, Author
 from django.http import HttpResponse
-from .forms import CreateForm,createForm,FindForm
+from .forms import CreateForm,createForm,FindForm,EditForm
 from django.shortcuts import redirect
 from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
 import pandas as pd
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView
 
+from django.views import generic
+from .forms import LoginForm
 # Create your views here.
 
 def pagination(request, queryset, count):
@@ -57,7 +61,7 @@ def create(request):
         obj = Book()
         book = createForm(request.POST, instance=obj)
         book.save()
-        return redirect(to='/myapp')
+        return redirect(to='/find')
     params ={
             'form': createForm()
 
@@ -100,3 +104,32 @@ def find(request):
 
     }
     return render(request, 'lib/find.html', params)
+    
+def sumple(request):
+    return render(request, 'lib/sumple.html')
+    
+def edit(request,num):
+    obj = Book.objects.get(id=num)
+    num = obj.id
+    if request.method=='POST':
+        book = createForm(request.POST, instance=obj)
+        book.save()
+        return redirect(to='find')
+    params = {
+    'title': 'Edit',
+    'id': num,
+    'form':createForm(instance=obj),
+    
+    }
+    return render(request, 'lib/edit.html', params)  
+    
+class Top(generic.TemplateView):
+    template_name = 'lib/find.html'
+    
+class Login(LoginView):
+    form_class = LoginForm
+    template_name = 'lib/login.html'
+    
+class LogOut(LoginRequiredMixin, LogoutView):
+    template_name = 'lib/find.html'  
+    
